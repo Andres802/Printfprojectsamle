@@ -1,9 +1,8 @@
 #include <stdio.h>
 int main(void)
 {
-	
-	 int a; 
 
-	printf("%");
-	
+	 int a;
+
+	printf("%%%%d", 2);
 }
