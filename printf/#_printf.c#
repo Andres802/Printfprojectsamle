@@ -8,12 +8,12 @@ int _printf(const char *format, ...)
 {
 	int i;
 	int count = 0; 
+	int aux = 0;
 	va_list valist;
 
-	
-	if (!printf_valid(format) || (format == NULL))
-		return (-1);
 	va_start(valist, format);
+	if (!printf_valid(format))
+z		return (-1);
 	for (i = 0; format[i] != '\0';  i++, count++)
 	{
 		if (format[i] == '%')
@@ -22,7 +22,8 @@ int _printf(const char *format, ...)
 			if (format[i] != '%')
 			{
 				--count;
-				count = printf_struct(format[i])(valist, count);	
+				aux = printf_struct(format[i])(valist, count);
+				count = aux;
 			}
 			else
 				_putchar(format[i]);
